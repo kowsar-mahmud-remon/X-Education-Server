@@ -16,18 +16,6 @@ const moduleRoutes = [
     path: '/auth',
     route: AuthRoutes,
   },
-  {
-    path: '/bike',
-    route: BikeRoutes,
-  },
-  {
-    path: '/checkout',
-    route: CheckoutRoutes,
-  },
-  {
-    path: '/',
-    route: StripeRoutes,
-  },
 ];
 
 moduleRoutes.forEach(route => router.use(route.path, route.route));
