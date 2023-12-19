@@ -1,8 +1,5 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
-import { BikeRoutes } from '../modules/bike/bike.route';
-import { CheckoutRoutes } from '../modules/checkout/checkout.route';
-import { StripeRoutes } from '../modules/payment/payment.route';
 import { UserRoutes } from '../modules/user/user.route';
 
 const router = express.Router();
