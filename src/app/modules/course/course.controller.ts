@@ -4,7 +4,7 @@ import ApiError from '../../../errors/ApiError';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { ICourse } from './course.interface';
-import { CourseService } from './user.service';
+import { CourseService } from './course.service';
 
 const createCourse = catchAsync(async (req: Request, res: Response) => {
   const course = req.body;
