@@ -1,43 +1,39 @@
 import { z } from 'zod';
 
-const createScheduleZodSchema = z.object({
-  body: z.object({
-    startDate: z.string({
-      required_error: 'startDate is required',
-    }),
-    endDate: z.string({
-      required_error: 'endDate is required',
-    }),
-    classDays: z.string({
-      required_error: 'classDays is required',
-    }),
-    classTime: z.string({
-      required_error: 'classTime is required',
-    }),
-  }),
-});
-
 const createCourseZodSchema = z.object({
   body: z.object({
     name: z.string({
       required_error: 'Name is required',
     }),
     description: z.string({
-      required_error: 'description is required',
+      required_error: 'Description is required',
     }),
     price: z.number({
-      required_error: 'price is required',
+      required_error: 'Price is required',
     }),
     duration: z.string({
-      required_error: 'duration is required',
+      required_error: 'Duration is required',
     }),
     level: z.string({
-      required_error: 'level is required',
+      required_error: 'Level is required',
     }),
-    topics: z.string({
-      required_error: 'topics is required',
+    topics: z.array(z.string()).refine(data => data.length > 0, {
+      message: 'At least one topic is required',
     }),
-    schedule: createScheduleZodSchema,
+    schedule: z.object({
+      startDate: z.string({
+        required_error: 'Start date is required',
+      }),
+      endDate: z.string({
+        required_error: 'End date is required',
+      }),
+      classDays: z.array(z.string()).refine(data => data.length > 0, {
+        message: 'At least one class day is required',
+      }),
+      classTime: z.string({
+        required_error: 'Class time is required',
+      }),
+    }),
   }),
 });
 
